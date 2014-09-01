@@ -1,4 +1,4 @@
-# chai-datetime
+# chai-string
 
 Matchers for chai to help with common string comparison assertions.
 

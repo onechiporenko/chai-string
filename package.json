@@ -1,6 +1,6 @@
 {
   "name": "chai-string",
-  "version": "1.3.0",
+  "version": "0.0.1",
   "keywords": ["chai", "testing", "string"],
   "description": "strings comparison matchers for chai",
   "main": "chai-string.js",
@@ -13,16 +13,15 @@
   },
   "author": {
     "name": "Oleg Nechiporenko",
-    "email": "michael@diminishing.org",
     "url": "https://github.com/onechiporenko"
   },
   "license": "MIT",
   "devDependencies": {
-    "chai": "^1.9.0",
+    "chai": "1.9.1",
     "mocha": "~1.6.0",
     "nodemon": "~0.6.23"
   },
   "dependencies": {
-    "chai": "^1.9.0"
+    "chai": "1.9.1"
   }
 }

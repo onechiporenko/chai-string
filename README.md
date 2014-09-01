@@ -25,8 +25,9 @@ chai.use(require('chai-string'));
 * startsWith
 * endsWith
 * equalIgnoreCase
+* isSingleLine
 
-All assertions are defined for both the BDD and TDD syntaxes.
+All assertions are defined for both the BDD and TDD syntax.
 
 ```javascript
 var d1 = 'abcdef',

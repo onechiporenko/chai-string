@@ -99,6 +99,20 @@
 
     });
 
+    describe('#isSingleLine', function() {
+
+      it('should return true', function() {
+        var str = 'abcdef';
+        chai.string.isSingleLine(str).should.be.true;
+      });
+
+      it('should return false', function() {
+        var str = "abc\ndef";
+        chai.string.isSingleLine(str).should.be.false;
+      });
+
+    });
+
     describe('tdd alias', function () {
 
       beforeEach(function () {
@@ -127,6 +141,14 @@
 
       it('.notEqualIgnoreCase', function () {
         assert.notEqualIgnoreCase(this.str, 'abDDD');
+      });
+
+      it('.isSingleLine', function() {
+        assert.isSingleLine('abcdef');
+      });
+
+      it('.notIsSingleLine', function() {
+        assert.notIsSingleLine("abc\ndef");
       });
 
     });

@@ -31,6 +31,10 @@
     return str1.toLowerCase() === str2.toLowerCase();
   };
 
+  chai.string.isSingleLine = function(str) {
+    return str.trim().indexOf("\n") === -1;
+  };
+
   chai.Assertion.addChainableMethod('startsWith', function (expected) {
     var actual = this._obj;
 
@@ -67,6 +71,17 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('isSingleLine', function () {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.isSingleLine(actual),
+      'expected ' + this._obj + ' to be single line',
+      'expected ' + this._obj + ' to be not single line',
+      actual.toString()
+    );
+  });
+
   // Asserts
   var assert = chai.assert;
 
@@ -92,6 +107,14 @@
 
   assert.notEqualIgnoreCase = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.equalIgnoreCase(exp);
+  };
+
+  assert.isSingleLine = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.isSingleLine();
+  };
+
+  assert.notIsSingleLine = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.isSingleLine();
   };
 
 }));

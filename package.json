@@ -1,6 +1,6 @@
 {
   "name": "chai-string",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "keywords": ["chai", "testing", "string"],
   "description": "strings comparison matchers for chai",
   "main": "chai-string.js",

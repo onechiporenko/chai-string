@@ -26,6 +26,7 @@ chai.use(require('chai-string'));
 * endsWith
 * equalIgnoreCase
 * isSingleLine
+* reverseOf
 
 All assertions are defined for both the BDD and TDD syntax.
 

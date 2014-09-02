@@ -31,8 +31,12 @@
     return str1.toLowerCase() === str2.toLowerCase();
   };
 
-  chai.string.isSingleLine = function(str) {
+  chai.string.singleLine = function(str) {
     return str.trim().indexOf("\n") === -1;
+  };
+
+  chai.string.reverseOf = function(str, reversed) {
+    return str.split('').reverse().join('') === reversed;
   };
 
   chai.Assertion.addChainableMethod('startsWith', function (expected) {
@@ -71,16 +75,29 @@
     );
   });
 
-  chai.Assertion.addChainableMethod('isSingleLine', function () {
+  chai.Assertion.addChainableMethod('singleLine', function () {
     var actual = this._obj;
 
     return this.assert(
-      chai.string.isSingleLine(actual),
+      chai.string.singleLine(actual),
       'expected ' + this._obj + ' to be single line',
       'expected ' + this._obj + ' to be not single line',
       actual.toString()
     );
   });
+
+  chai.Assertion.addChainableMethod('reverseOf', function(expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.reverseOf(actual, expected),
+      'expected ' + this._obj + ' to be reverse of ' + expected,
+      'expected ' + this._obj + ' to be not reverse of ' + expected,
+      expected.toString(),
+      actual.toString()
+    );
+  });
+
 
   // Asserts
   var assert = chai.assert;
@@ -109,12 +126,20 @@
     new chai.Assertion(val, msg).to.not.be.equalIgnoreCase(exp);
   };
 
-  assert.isSingleLine = function(val, exp, msg) {
-    new chai.Assertion(val, msg).to.be.isSingleLine();
+  assert.singleLine = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.singleLine();
   };
 
-  assert.notIsSingleLine = function(val, exp, msg) {
-    new chai.Assertion(val, msg).to.not.be.isSingleLine();
+  assert.notSingleLine = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.singleLine();
+  };
+
+  assert.reverseOf = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.reverseOf(exp);
+  };
+
+  assert.notReverseOf = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.reverseOf(exp);
   };
 
 }));

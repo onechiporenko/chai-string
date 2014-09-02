@@ -99,16 +99,32 @@
 
     });
 
-    describe('#isSingleLine', function() {
+    describe('#singleLine', function() {
 
       it('should return true', function() {
         var str = 'abcdef';
-        chai.string.isSingleLine(str).should.be.true;
+        chai.string.singleLine(str).should.be.true;
       });
 
       it('should return false', function() {
         var str = "abc\ndef";
-        chai.string.isSingleLine(str).should.be.false;
+        chai.string.singleLine(str).should.be.false;
+      });
+
+    });
+
+    describe('#reverseOf', function() {
+
+      it('should return true', function () {
+        var str1 = 'abcdef',
+          str2 = 'fedcba';
+        chai.string.reverseOf(str1, str2).should.be.true;
+      });
+
+      it('should return false', function () {
+        var str1 = 'abcdef',
+          str2 = 'aBDDD';
+        chai.string.reverseOf(str1, str2).should.be.false;
       });
 
     });
@@ -143,12 +159,20 @@
         assert.notEqualIgnoreCase(this.str, 'abDDD');
       });
 
-      it('.isSingleLine', function() {
-        assert.isSingleLine('abcdef');
+      it('.singleLine', function() {
+        assert.singleLine(this.str);
       });
 
-      it('.notIsSingleLine', function() {
-        assert.notIsSingleLine("abc\ndef");
+      it('.notSingleLine', function() {
+        assert.notSingleLine("abc\ndef");
+      });
+
+      it('.reverseOf', function() {
+        assert.reverseOf(this.str, 'fedcba');
+      });
+
+      it('.notReverseOf', function() {
+        assert.notReverseOf(this.str, 'aaaaa');
       });
 
     });

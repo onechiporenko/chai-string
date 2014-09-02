@@ -25,7 +25,7 @@ chai.use(require('chai-string'));
 * startsWith
 * endsWith
 * equalIgnoreCase
-* isSingleLine
+* singleLine
 * reverseOf
 
 All assertions are defined for both the BDD and TDD syntax.
@@ -37,6 +37,36 @@ var d1 = 'abcdef',
 d1.should.startsWith.d2
 expect(d1).to.startsWith(d2)
 assert.startsWith(d1, d2)
+```
+
+### startsWith
+```javascript
+assert.startsWith('abcdef', 'abc');
+expect('abcdef').to.startsWith('abc');
+```
+
+### endsWith
+```javascript
+assert.endsWith('abcdef', 'def');
+expect('abcdef').to.endsWith('def');
+```
+
+### equalIgnoreCase
+```javascript
+assert.equalIgnoreCase('abcdef', 'AbCdEf');
+expect('abcdef').to.equalIgnoreCase('AbCdEf');
+```
+
+### singleLine
+```javascript
+assert.singleLine('abcdef');
+expect('abcdef').to.be.singleLine();
+```
+
+### reverseOf
+```javascript
+assert.reverseOf('abcdef', 'fedcba');
+expect('abcdef').to.be.reverseOf('fedcba');
 ```
 
 ## Thanks

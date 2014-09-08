@@ -39,6 +39,16 @@
     return str.split('').reverse().join('') === reversed;
   };
 
+  chai.string.palindrome = function(str) {
+    var len = str.length;
+    for ( var i = 0; i < Math.floor(len/2); i++ ) {
+      if (str[i] !== str[len - 1 - i]) {
+        return false;
+      }
+    }
+    return true;
+  };
+
   chai.Assertion.addChainableMethod('startsWith', function (expected) {
     var actual = this._obj;
 
@@ -98,6 +108,17 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('palindrome', function () {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.palindrome(actual),
+      'expected ' + this._obj + ' to be palindrome',
+      'expected ' + this._obj + ' to be not palindrome',
+      actual.toString()
+    );
+  });
+
 
   // Asserts
   var assert = chai.assert;
@@ -140,6 +161,14 @@
 
   assert.notReverseOf = function(val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.reverseOf(exp);
+  };
+
+  assert.palindrome = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.palindrome();
+  };
+
+  assert.notPalindrome = function(val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.palindrome();
   };
 
 }));

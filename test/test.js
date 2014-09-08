@@ -129,6 +129,30 @@
 
     });
 
+    describe('#palindrome', function() {
+
+      it('should return true', function() {
+        var str = 'abcba';
+        chai.string.palindrome(str).should.be.true;
+      });
+
+      it('should return true (2)', function() {
+        var str = 'abccba';
+        chai.string.palindrome(str).should.be.true;
+      });
+
+      it('should return true (3)', function() {
+        var str = '';
+        chai.string.palindrome(str).should.be.true;
+      });
+
+      it('should return false', function() {
+        var str = 'abcdef';
+        chai.string.palindrome(str).should.be.false;
+      });
+
+    });
+
     describe('tdd alias', function () {
 
       beforeEach(function () {
@@ -173,6 +197,16 @@
 
       it('.notReverseOf', function() {
         assert.notReverseOf(this.str, 'aaaaa');
+      });
+
+      it('.palindrome', function() {
+        assert.palindrome('abcba');
+        assert.palindrome('abccba');
+        assert.palindrome('');
+      });
+
+      it('.notPalindrome', function() {
+        assert.notPalindrome(this.str);
       });
 
     });

@@ -27,6 +27,7 @@ chai.use(require('chai-string'));
 * equalIgnoreCase
 * singleLine
 * reverseOf
+* palindrome
 
 All assertions are defined for both the BDD and TDD syntax.
 
@@ -67,6 +68,12 @@ expect('abcdef').to.be.singleLine();
 ```javascript
 assert.reverseOf('abcdef', 'fedcba');
 expect('abcdef').to.be.reverseOf('fedcba');
+```
+
+### palindrome
+```javascript
+assert.palindrome('abccba');
+expect('abccba').to.be.palindrome();
 ```
 
 ## Thanks

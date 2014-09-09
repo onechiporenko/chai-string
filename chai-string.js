@@ -55,9 +55,7 @@
     return this.assert(
       chai.string.startsWith(actual, expected),
       'expected ' + this._obj + ' to starts with ' + expected,
-      'expected ' + this._obj + ' to not starts with ' + expected,
-      expected.toString(),
-      actual.toString()
+      'expected ' + this._obj + ' to not starts with ' + expected
     );
   });
 
@@ -67,9 +65,7 @@
     return this.assert(
       chai.string.endsWith(actual, expected),
       'expected ' + this._obj + ' to ends with ' + expected,
-      'expected ' + this._obj + ' to not ends with ' + expected,
-      expected.toString(),
-      actual.toString()
+      'expected ' + this._obj + ' to not ends with ' + expected
     );
   });
 
@@ -79,9 +75,7 @@
     return this.assert(
       chai.string.equalIgnoreCase(actual, expected),
       'expected ' + this._obj + ' to be equal to ' + expected + ' ignoring case',
-      'expected ' + this._obj + ' to be not equal to ' + expected + ' ignoring case',
-      expected.toString(),
-      actual.toString()
+      'expected ' + this._obj + ' to be not equal to ' + expected + ' ignoring case'
     );
   });
 
@@ -91,8 +85,7 @@
     return this.assert(
       chai.string.singleLine(actual),
       'expected ' + this._obj + ' to be single line',
-      'expected ' + this._obj + ' to be not single line',
-      actual.toString()
+      'expected ' + this._obj + ' to be not single line'
     );
   });
 
@@ -102,9 +95,7 @@
     return this.assert(
       chai.string.reverseOf(actual, expected),
       'expected ' + this._obj + ' to be reverse of ' + expected,
-      'expected ' + this._obj + ' to be not reverse of ' + expected,
-      expected.toString(),
-      actual.toString()
+      'expected ' + this._obj + ' to be not reverse of ' + expected
     );
   });
 
@@ -114,8 +105,7 @@
     return this.assert(
       chai.string.palindrome(actual),
       'expected ' + this._obj + ' to be palindrome',
-      'expected ' + this._obj + ' to be not palindrome',
-      actual.toString()
+      'expected ' + this._obj + ' to be not palindrome'
     );
   });
 

@@ -153,6 +153,31 @@
 
     });
 
+    describe('#entriesCount', function() {
+
+      it('should return true', function() {
+        var str = 'abcabd',
+          substr = 'ab',
+          count = 2;
+        chai.string.entriesCount(str, substr, count).should.be.true;
+      });
+
+      it('should return true (2)', function() {
+        var str = 'ababd',
+          substr = 'ab',
+          count = 2;
+        chai.string.entriesCount(str, substr, count).should.be.true;
+      });
+
+      it('should return true (3)', function() {
+        var str = 'abab',
+          substr = 'ab',
+          count = 2;
+        chai.string.entriesCount(str, substr, count).should.be.true;
+      });
+
+    });
+
     describe('tdd alias', function () {
 
       beforeEach(function () {
@@ -207,6 +232,13 @@
 
       it('.notPalindrome', function() {
         assert.notPalindrome(this.str);
+      });
+
+      it('.entriesCount', function() {
+        assert.entriesCount('abcabd', 'ab', 2);
+        assert.entriesCount('ababd', 'ab', 2);
+        assert.entriesCount('abab', 'ab', 2);
+        assert.entriesCount('', 'ab', 0);
       });
 
     });

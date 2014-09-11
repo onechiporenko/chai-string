@@ -49,6 +49,23 @@
     return true;
   };
 
+  chai.string.entriesCount = function(str, substr, count) {
+    var i = 0,
+      len = str.length,
+      matches = 0;
+    while (i < len) {
+      var indx = str.indexOf(substr, i);
+      if (indx === -1) {
+        break;
+      }
+      else {
+        matches++;
+        i = indx + 1;
+      }
+    }
+    return matches === count;
+  };
+
   chai.Assertion.addChainableMethod('startsWith', function (expected) {
     var actual = this._obj;
 
@@ -109,6 +126,15 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('entriesCount', function(substr, expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.entriesCount(actual, substr, expected),
+      'expected ' + this._obj + ' to have ' + substr + ' ' + expected + ' time(s)',
+      'expected ' + this._obj + ' to not have ' + substr + ' ' + expected + ' time(s)'
+    );
+  });
 
   // Asserts
   var assert = chai.assert;
@@ -160,5 +186,9 @@
   assert.notPalindrome = function(val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.palindrome();
   };
+
+  assert.entriesCount = function(str, substr, count, msg) {
+    new chai.Assertion(str, msg).to.have.entriesCount(substr, count);
+  }
 
 }));

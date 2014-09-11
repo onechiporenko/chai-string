@@ -62,6 +62,7 @@
 <li>singleLine</li>
 <li>reverseOf</li>
 <li>palindrome</li>
+<li>entriesCount</li>
 </ul><p>All assertions are defined for both the BDD and TDD syntax.</p>
 
 <div class="highlight highlight-javascript"><pre><span class="kd">var</span> <span class="nx">d1</span> <span class="o">=</span> <span class="s1">'abcdef'</span><span class="p">,</span>
@@ -112,6 +113,13 @@
 
 <div class="highlight highlight-javascript"><pre><span class="nx">assert</span><span class="p">.</span><span class="nx">palindrome</span><span class="p">(</span><span class="s1">'abccba'</span><span class="p">);</span>
 <span class="nx">expect</span><span class="p">(</span><span class="s1">'abccba'</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">be</span><span class="p">.</span><span class="nx">palindrome</span><span class="p">();</span>
+</pre></div>
+
+<h3>
+<a name="entriescount" class="anchor" href="#entriescount"><span class="octicon octicon-link"></span></a>entriesCount</h3>
+
+<div class="highlight highlight-javascript"><pre><span class="nx">assert</span><span class="p">.</span><span class="nx">entriesCount</span><span class="p">(</span><span class="s1">'abcabd'</span><span class="p">,</span> <span class="s1">'ab'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
+<span class="nx">expect</span><span class="p">(</span><span class="s1">'abcabd'</span><span class="p">).</span><span class="nx">to</span><span class="p">.</span><span class="nx">have</span><span class="p">.</span><span class="nx">entriesCount</span><span class="p">(</span><span class="s1">'ab'</span><span class="p">,</span> <span class="mi">2</span><span class="p">);</span>
 </pre></div>
 
 <h2>

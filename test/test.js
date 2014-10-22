@@ -67,6 +67,22 @@
 
     });
 
+    describe('#startWith', function () {
+
+      it('should return true', function () {
+        var str = 'abcdef',
+          prefix = 'abc';
+        str.should.startWith(prefix);
+      });
+
+      it('should return false', function () {
+        var str = 'abcdef',
+          prefix = 'cba';
+        str.should.not.startWith(prefix);
+      });
+
+    });
+
     describe('#endsWith', function () {
 
       it('should return true', function () {
@@ -79,6 +95,22 @@
         var str = 'abcdef',
           suffix = 'fed';
         chai.string.endsWith(str, suffix).should.be.false;
+      });
+
+    });
+
+    describe('#endWith', function () {
+
+      it('should return true', function () {
+        var str = 'abcdef',
+          suffix = 'def';
+        str.should.endWith(suffix);
+      });
+
+      it('should return false', function () {
+        var str = 'abcdef',
+          suffix = 'fed';
+        str.should.not.endWith(suffix);
       });
 
     });

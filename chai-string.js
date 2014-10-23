@@ -66,7 +66,7 @@
     return matches === count;
   };
 
-  chai.Assertion.addChainableMethod('startsWith', function (expected) {
+  var startsWithMethodWrapper = function (expected) {
     var actual = this._obj;
 
     return this.assert(
@@ -74,9 +74,12 @@
       'expected ' + this._obj + ' to starts with ' + expected,
       'expected ' + this._obj + ' to not starts with ' + expected
     );
-  });
+  };
 
-  chai.Assertion.addChainableMethod('endsWith', function (expected) {
+  chai.Assertion.addChainableMethod('startsWith', startsWithMethodWrapper);
+  chai.Assertion.addChainableMethod('startWith', startsWithMethodWrapper);
+
+  var endsWithMethodWrapper = function (expected) {
     var actual = this._obj;
 
     return this.assert(
@@ -84,7 +87,10 @@
       'expected ' + this._obj + ' to ends with ' + expected,
       'expected ' + this._obj + ' to not ends with ' + expected
     );
-  });
+  };
+
+  chai.Assertion.addChainableMethod('endsWith', endsWithMethodWrapper);
+  chai.Assertion.addChainableMethod('endWith', endsWithMethodWrapper);
 
   chai.Assertion.addChainableMethod('equalIgnoreCase', function (expected) {
     var actual = this._obj;

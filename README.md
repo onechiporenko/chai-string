@@ -22,35 +22,37 @@ chai.use(require('chai-string'));
 
 ## Assertions
 
-* startsWith
-* endsWith
+* startsWith/startWith
+* endsWith/endWith
 * equalIgnoreCase
 * singleLine
 * reverseOf
 * palindrome
 * entriesCount
 
-All assertions are defined for both the BDD and TDD syntax.
+All assertions are defined for both the BDD and TDD syntax but some aliases exist to make the assertions look good with both styles.
 
 ```javascript
 var d1 = 'abcdef',
     d2 = 'abc';
 
-d1.should.startsWith.d2
+d1.should.startWith.d2
 expect(d1).to.startsWith(d2)
 assert.startsWith(d1, d2)
 ```
 
-### startsWith
+### startsWith/startWith
 ```javascript
 assert.startsWith('abcdef', 'abc');
 expect('abcdef').to.startsWith('abc');
+'abcdef'.should.startWith('abc');
 ```
 
-### endsWith
+### endsWith/endWith
 ```javascript
 assert.endsWith('abcdef', 'def');
 expect('abcdef').to.endsWith('def');
+'abcdef'.should.endWith('def');
 ```
 
 ### equalIgnoreCase

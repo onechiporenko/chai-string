@@ -71,8 +71,8 @@
 
     return this.assert(
       chai.string.startsWith(actual, expected),
-      'expected ' + this._obj + ' to starts with ' + expected,
-      'expected ' + this._obj + ' to not starts with ' + expected
+      'expected ' + this._obj + ' to start with ' + expected,
+      'expected ' + this._obj + ' not to start with ' + expected
     );
   };
 
@@ -84,8 +84,8 @@
 
     return this.assert(
       chai.string.endsWith(actual, expected),
-      'expected ' + this._obj + ' to ends with ' + expected,
-      'expected ' + this._obj + ' to not ends with ' + expected
+      'expected ' + this._obj + ' to end with ' + expected,
+      'expected ' + this._obj + ' not to end with ' + expected
     );
   };
 
@@ -97,8 +97,8 @@
 
     return this.assert(
       chai.string.equalIgnoreCase(actual, expected),
-      'expected ' + this._obj + ' to be equal to ' + expected + ' ignoring case',
-      'expected ' + this._obj + ' to be not equal to ' + expected + ' ignoring case'
+      'expected ' + this._obj + ' to equal ' + expected + ' ignoring case',
+      'expected ' + this._obj + ' not to equal ' + expected + ' ignoring case'
     );
   });
 
@@ -107,8 +107,8 @@
 
     return this.assert(
       chai.string.singleLine(actual),
-      'expected ' + this._obj + ' to be single line',
-      'expected ' + this._obj + ' to be not single line'
+      'expected ' + this._obj + ' to be a single line',
+      'expected ' + this._obj + ' not to be a single line'
     );
   });
 
@@ -117,8 +117,8 @@
 
     return this.assert(
       chai.string.reverseOf(actual, expected),
-      'expected ' + this._obj + ' to be reverse of ' + expected,
-      'expected ' + this._obj + ' to be not reverse of ' + expected
+      'expected ' + this._obj + ' to be the reverse of ' + expected,
+      'expected ' + this._obj + ' not to be the reverse of ' + expected
     );
   });
 
@@ -127,8 +127,8 @@
 
     return this.assert(
       chai.string.palindrome(actual),
-      'expected ' + this._obj + ' to be palindrome',
-      'expected ' + this._obj + ' to be not palindrome'
+      'expected ' + this._obj + ' to be a palindrome',
+      'expected ' + this._obj + ' not to be a palindrome'
     );
   });
 

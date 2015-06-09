@@ -15,6 +15,7 @@
 
   var should = chai.should();
   var assert = chai.assert;
+  var expect = chai.expect;
 
   if (testingServer) {
     var chai_string = require('../chai-string');
@@ -63,6 +64,11 @@
         var str = 'abcdef',
           prefix = 'cba';
         chai.string.startsWith(str, prefix).should.be.false;
+      });
+
+      it('check that', function () {
+        var obj = { foo: 'hello world' };
+        expect(obj).to.have.property('foo').that.startsWith('hello');
       });
 
     });

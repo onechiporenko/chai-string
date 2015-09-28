@@ -137,6 +137,22 @@
 
     });
 
+    describe('#equalIgnoreSpaces', function () {
+
+      it('should return true', function () {
+        var str1 = 'abcdef',
+          str2 = 'a\nb\tc\r d  ef';
+        chai.string.equalIgnoreSpaces(str1, str2).should.be.true;
+      });
+
+      it('should return false', function () {
+        var str1 = 'abcdef',
+          str2 = 'a\nb\tc\r d  efg';
+        chai.string.equalIgnoreSpaces(str1, str2).should.be.false;
+      });
+
+    });
+
     describe('#singleLine', function() {
 
       it('should return true', function() {
@@ -220,6 +236,7 @@
 
       beforeEach(function () {
         this.str = 'abcdef';
+        this.str2 = 'a\nb\tc\r d  ef';
       });
 
       it('.startsWith', function () {
@@ -244,6 +261,14 @@
 
       it('.notEqualIgnoreCase', function () {
         assert.notEqualIgnoreCase(this.str, 'abDDD');
+      });
+
+      it('.equalIgnoreSpaces', function () {
+        assert.equalIgnoreSpaces(this.str, this.str2);
+      });
+
+      it('.notEqualIgnoreSpaces', function () {
+        assert.notEqualIgnoreSpaces(this.str, this.str2 + 'g');
       });
 
       it('.singleLine', function() {

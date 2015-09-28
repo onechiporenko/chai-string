@@ -26,6 +26,7 @@ chai.use(require('chai-string'));
 * startsWith/startWith
 * endsWith/endWith
 * equalIgnoreCase
+* equalIgnoreSpaces
 * singleLine
 * reverseOf
 * palindrome
@@ -60,6 +61,12 @@ expect('abcdef').to.endsWith('def');
 ```javascript
 assert.equalIgnoreCase('abcdef', 'AbCdEf');
 expect('abcdef').to.equalIgnoreCase('AbCdEf');
+```
+
+### equalIgnoreSpaces
+```javascript
+assert.equalIgnoreSpaces('abcdef', 'a\nb\tc\r d  ef');
+expect('abcdef').to.equalIgnoreSpaces('a\nb\tc\r d  ef');
 ```
 
 ### singleLine

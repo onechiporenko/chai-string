@@ -31,6 +31,10 @@
     return str1.toLowerCase() === str2.toLowerCase();
   };
 
+  chai.string.equalIgnoreSpaces = function (str1, str2) {
+    return str1.replace(/\s/g, '') === str2.replace(/\s/g, '');
+  };
+
   chai.string.singleLine = function(str) {
     return str.trim().indexOf("\n") === -1;
   };
@@ -102,6 +106,16 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('equalIgnoreSpaces', function (expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.equalIgnoreSpaces(actual, expected),
+      'expected ' + this._obj + ' to equal ' + expected + ' ignoring spaces',
+      'expected ' + this._obj + ' not to equal ' + expected + ' ignoring spaces'
+    );
+  });
+
   chai.Assertion.addChainableMethod('singleLine', function () {
     var actual = this._obj;
 
@@ -167,6 +181,14 @@
 
   assert.notEqualIgnoreCase = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.equalIgnoreCase(exp);
+  };
+
+  assert.equalIgnoreSpaces = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.equalIgnoreSpaces(exp);
+  };
+
+  assert.notEqualIgnoreSpaces = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.equalIgnoreSpaces(exp);
   };
 
   assert.singleLine = function(val, exp, msg) {

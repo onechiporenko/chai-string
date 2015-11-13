@@ -1,7 +1,7 @@
 {
   "name": "chai-string",
   "version": "1.1.3",
-  "keywords": ["chai", "testing", "string"],
+  "keywords": ["chai", "testing", "string", "chai-plugin", "browser"],
   "description": "strings comparison matchers for chai",
   "main": "chai-string.js",
   "scripts": {

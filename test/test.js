@@ -232,6 +232,39 @@
 
     });
 
+    describe('#indexOf', function() {
+
+      it('should return true', function() {
+        var str = 'abcabd',
+            substr = 'ab',
+            index = 0;
+        chai.string.indexOf(str, substr, index).should.be.true;
+      });
+
+      it('should return true (2)', function() {
+        var str = 'abcabd',
+            substr = 'ca',
+            index = 2;
+        chai.string.indexOf(str, substr, index).should.be.true;
+      });
+
+      it('should return true (3)', function() {
+        var str = 'ababab',
+            substr = 'ba',
+            index = 1;
+        chai.string.indexOf(str, substr, index).should.be.true;
+      });
+
+      it('should return false', function() {
+        var str = 'abcaab',
+            substr = 'da',
+            index = 1;
+        chai.string.indexOf(str, substr, index).should.be.false;
+      });
+
+    });
+
+
     describe('tdd alias', function () {
 
       beforeEach(function () {
@@ -302,6 +335,13 @@
         assert.entriesCount('ababd', 'ab', 2);
         assert.entriesCount('abab', 'ab', 2);
         assert.entriesCount('', 'ab', 0);
+      });
+
+      it('.indexOf', function() {
+        assert.indexOf('abcabd', 'ab', 0);
+        assert.indexOf('abcabd', 'ca', 2);
+        assert.indexOf('ababab', 'ba', 1);
+        expect('ababab').to.have.indexOf('ba', 1);
       });
 
     });

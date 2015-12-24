@@ -93,6 +93,12 @@ assert.entriesCount('abcabd', 'ab', 2);
 expect('abcabd').to.have.entriesCount('ab', 2);
 ```
 
+### indexOf
+```javascript
+assert.indexOf('abcabd', 'ab', 0);
+expect('abcabd').to.have.indexOf('ab', 0);
+```
+
 ## Thanks
 
 Thanks to the [chai-datetime](https://github.com/gaslight/chai-datetime) module for giving me an idea for how to structure and test a chai plugin.

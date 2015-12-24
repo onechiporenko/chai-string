@@ -31,6 +31,7 @@ chai.use(require('chai-string'));
 * reverseOf
 * palindrome
 * entriesCount
+* indexOf
 
 All assertions are defined for both the BDD and TDD syntax but some aliases exist to make the assertions look good with both styles.
 

@@ -70,6 +70,10 @@
     return matches === count;
   };
 
+  chai.string.indexOf = function(str, substr, index) {
+    return str.indexOf(substr) === index;
+  };
+
   var startsWithMethodWrapper = function (expected) {
     var actual = this._obj;
 
@@ -156,6 +160,16 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('indexOf', function(substr, index) {
+    var actual = this._obj;
+
+    return this.assert(
+        chai.string.indexOf(actual, substr, index),
+        'expected ' + this._obj + ' to have ' + substr + ' on index ' + index,
+        'expected ' + this._obj + ' to not have ' + substr + ' on index ' + index
+    );
+  });
+
   // Asserts
   var assert = chai.assert;
 
@@ -217,6 +231,10 @@
 
   assert.entriesCount = function(str, substr, count, msg) {
     new chai.Assertion(str, msg).to.have.entriesCount(substr, count);
+  }
+
+  assert.indexOf = function(str, substr, index, msg) {
+    new chai.Assertion(str, msg).to.have.indexOf(substr, index);
   }
 
 }));

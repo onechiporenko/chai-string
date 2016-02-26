@@ -18,32 +18,56 @@
 }(function (chai, utils) {
   chai.string = chai.string || {};
 
+  function isString(value) {
+    return typeof value === 'string';
+  }
 
   chai.string.startsWith = function (str, prefix) {
+    if (!isString(str) || !isString(prefix)) {
+      return false;
+    }
     return str.indexOf(prefix) === 0;
   };
 
   chai.string.endsWith = function (str, suffix) {
+    if (!isString(str) || !isString(suffix)) {
+      return false;
+    }
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
   };
 
   chai.string.equalIgnoreCase = function (str1, str2) {
+    if (!isString(str1) || !isString(str2)) {
+      return false;
+    }
     return str1.toLowerCase() === str2.toLowerCase();
   };
 
   chai.string.equalIgnoreSpaces = function (str1, str2) {
+    if (!isString(str1) || !isString(str2)) {
+      return false;
+    }
     return str1.replace(/\s/g, '') === str2.replace(/\s/g, '');
   };
 
   chai.string.singleLine = function(str) {
+    if (!isString(str)) {
+      return false;
+    }
     return str.trim().indexOf("\n") === -1;
   };
 
   chai.string.reverseOf = function(str, reversed) {
+    if (!isString(str) || !isString(reversed)) {
+      return false;
+    }
     return str.split('').reverse().join('') === reversed;
   };
 
   chai.string.palindrome = function(str) {
+    if (!isString(str)) {
+      return false;
+    }
     var len = str.length;
     for ( var i = 0; i < Math.floor(len/2); i++ ) {
       if (str[i] !== str[len - 1 - i]) {
@@ -54,24 +78,27 @@
   };
 
   chai.string.entriesCount = function(str, substr, count) {
-    var i = 0,
-      len = str.length,
-      matches = 0;
-    while (i < len) {
-      var indx = str.indexOf(substr, i);
-      if (indx === -1) {
-        break;
-      }
-      else {
-        matches++;
-        i = indx + 1;
+    var matches = 0;
+    if (isString(str) && isString(substr)) {
+      var i = 0;
+      var len = str.length;
+      while (i < len) {
+        var indx = str.indexOf(substr, i);
+        if (indx === -1) {
+          break;
+        }
+        else {
+          matches++;
+          i = indx + 1;
+        }
       }
     }
     return matches === count;
   };
 
   chai.string.indexOf = function(str, substr, index) {
-    return str.indexOf(substr) === index;
+    var indx = !isString(str) || !isString(substr) ? -1 : str.indexOf(substr);
+    return indx === index;
   };
 
   var startsWithMethodWrapper = function (expected) {
@@ -231,10 +258,10 @@
 
   assert.entriesCount = function(str, substr, count, msg) {
     new chai.Assertion(str, msg).to.have.entriesCount(substr, count);
-  }
+  };
 
   assert.indexOf = function(str, substr, index, msg) {
     new chai.Assertion(str, msg).to.have.indexOf(substr, index);
-  }
+  };
 
 }));

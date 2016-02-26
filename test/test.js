@@ -66,6 +66,12 @@
         chai.string.startsWith(str, prefix).should.be.false;
       });
 
+      it('should return false (2)', function () {
+        var str = '12abcdef',
+          prefix = 12.0;
+        chai.string.startsWith(str, prefix).should.be.false;
+      });
+
       it('check that', function () {
         var obj = { foo: 'hello world' };
         expect(obj).to.have.property('foo').that.startsWith('hello');
@@ -87,6 +93,13 @@
         str.should.not.startWith(prefix);
       });
 
+      it('should return false (2)', function () {
+        var str = '12abcdef',
+          prefix = 12.0;
+        str.should.not.startWith(prefix);
+        chai.string.startsWith(str, prefix).should.be.false;
+      });
+
     });
 
     describe('#endsWith', function () {
@@ -100,6 +113,12 @@
       it('should return false', function () {
         var str = 'abcdef',
           suffix = 'fed';
+        chai.string.endsWith(str, suffix).should.be.false;
+      });
+
+      it('should return false (2)', function () {
+        var str = 'abcdef12',
+          suffix = 12.0;
         chai.string.endsWith(str, suffix).should.be.false;
       });
 
@@ -119,6 +138,12 @@
         str.should.not.endWith(suffix);
       });
 
+      it('should return false (2)', function () {
+        var str = 'abcdef12',
+          suffix = 12.0;
+        str.should.not.endsWith(suffix);
+      });
+
     });
 
     describe('#equalIgnoreCase', function () {
@@ -132,6 +157,18 @@
       it('should return false', function () {
         var str1 = 'abcdef',
           str2 = 'aBDDD';
+        chai.string.equalIgnoreCase(str1, str2).should.be.false;
+      });
+
+      it('should return false (2)', function () {
+        var str1 = 12,
+          str2 = '12';
+        chai.string.equalIgnoreCase(str1, str2).should.be.false;
+      });
+
+      it('should return false (3)', function () {
+        var str1 = '12',
+          str2 = 12;
         chai.string.equalIgnoreCase(str1, str2).should.be.false;
       });
 
@@ -151,6 +188,14 @@
         chai.string.equalIgnoreSpaces(str1, str2).should.be.false;
       });
 
+      it('should return false (2)', function () {
+        chai.string.equalIgnoreSpaces('12', 12).should.be.false;
+      });
+
+      it('should return false (3)', function () {
+        chai.string.equalIgnoreSpaces(12, '12').should.be.false;
+      });
+
     });
 
     describe('#singleLine', function() {
@@ -163,6 +208,10 @@
       it('should return false', function() {
         var str = "abc\ndef";
         chai.string.singleLine(str).should.be.false;
+      });
+
+      it('should return false (2)', function() {
+        chai.string.singleLine(12).should.be.false;
       });
 
     });
@@ -179,6 +228,14 @@
         var str1 = 'abcdef',
           str2 = 'aBDDD';
         chai.string.reverseOf(str1, str2).should.be.false;
+      });
+
+      it('should return false (2)', function () {
+        chai.string.reverseOf('12', 12).should.be.false;
+      });
+
+      it('should return false (3)', function () {
+        chai.string.reverseOf(12, '12').should.be.false;
       });
 
     });
@@ -203,6 +260,10 @@
       it('should return false', function() {
         var str = 'abcdef';
         chai.string.palindrome(str).should.be.false;
+      });
+
+      it('should return false (2)', function() {
+        chai.string.palindrome(12).should.be.false;
       });
 
     });
@@ -230,6 +291,27 @@
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
+      it('should return true (4)', function() {
+        var str = 12,
+          substr = 'ab',
+          count = 0;
+        chai.string.entriesCount(str, substr, count).should.be.true;
+      });
+
+      it('should return true (5)', function() {
+        var str = '12',
+          substr = 12,
+          count = 0;
+        chai.string.entriesCount(str, substr, count).should.be.true;
+      });
+
+      it('should return false ', function() {
+        var str = '12',
+          substr = 12,
+          count = 1;
+        chai.string.entriesCount(str, substr, count).should.be.false;
+      });
+
     });
 
     describe('#indexOf', function() {
@@ -255,10 +337,38 @@
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
+      it('should return true (4)', function() {
+        var str = '12',
+          substr = 12,
+          index = -1;
+        chai.string.indexOf(str, substr, index).should.be.true;
+      });
+
+      it('should return true (5)', function() {
+        var str = 12,
+          substr = '12',
+          index = -1;
+        chai.string.indexOf(str, substr, index).should.be.true;
+      });
+
       it('should return false', function() {
         var str = 'abcaab',
             substr = 'da',
             index = 1;
+        chai.string.indexOf(str, substr, index).should.be.false;
+      });
+
+      it('should return false (2)', function() {
+        var str = '12',
+          substr = 12,
+          index = 0;
+        chai.string.indexOf(str, substr, index).should.be.false;
+      });
+
+      it('should return false (3)', function() {
+        var str = 12,
+          substr = '12',
+          index = 0;
         chai.string.indexOf(str, substr, index).should.be.false;
       });
 
@@ -280,12 +390,20 @@
         assert.notStartsWith(this.str, 'cba');
       });
 
+      it('.notStartsWith (2)', function () {
+        assert.notStartsWith('12abc', 12.0);
+      });
+
       it('.endsWith', function () {
         assert.endsWith(this.str, 'def');
       });
 
       it('.notEndsWith', function () {
         assert.notEndsWith(this.str, 'fed');
+      });
+
+      it('.notEndsWith (2)', function () {
+        assert.notEndsWith('abc12', 12.0);
       });
 
       it('.equalIgnoreCase', function () {
@@ -296,12 +414,28 @@
         assert.notEqualIgnoreCase(this.str, 'abDDD');
       });
 
+      it('.notEqualIgnoreCase (2)', function () {
+        assert.notEqualIgnoreCase('12', 12);
+      });
+
+      it('.notEqualIgnoreCase (3)', function () {
+        assert.notEqualIgnoreCase(12, '12');
+      });
+
       it('.equalIgnoreSpaces', function () {
         assert.equalIgnoreSpaces(this.str, this.str2);
       });
 
       it('.notEqualIgnoreSpaces', function () {
         assert.notEqualIgnoreSpaces(this.str, this.str2 + 'g');
+      });
+
+      it('.notEqualIgnoreSpaces (2)', function () {
+        assert.notEqualIgnoreSpaces('12', 12);
+      });
+
+      it('.notEqualIgnoreSpaces (3)', function () {
+        assert.notEqualIgnoreSpaces(12, '12');
       });
 
       it('.singleLine', function() {
@@ -312,12 +446,24 @@
         assert.notSingleLine("abc\ndef");
       });
 
+      it('.notSingleLine (2)', function() {
+        assert.notSingleLine(12);
+      });
+
       it('.reverseOf', function() {
         assert.reverseOf(this.str, 'fedcba');
       });
 
       it('.notReverseOf', function() {
         assert.notReverseOf(this.str, 'aaaaa');
+      });
+
+      it('.notReverseOf (2)', function() {
+        assert.notReverseOf('12', 12);
+      });
+
+      it('.notReverseOf (3)', function() {
+        assert.notReverseOf(12, '12');
       });
 
       it('.palindrome', function() {
@@ -330,17 +476,26 @@
         assert.notPalindrome(this.str);
       });
 
+      it('.notPalindrome (2)', function() {
+        assert.notPalindrome(12);
+      });
+
       it('.entriesCount', function() {
         assert.entriesCount('abcabd', 'ab', 2);
         assert.entriesCount('ababd', 'ab', 2);
         assert.entriesCount('abab', 'ab', 2);
         assert.entriesCount('', 'ab', 0);
+        assert.entriesCount(12, 'ab', 0);
+        assert.entriesCount('12', 12, 0);
       });
 
       it('.indexOf', function() {
         assert.indexOf('abcabd', 'ab', 0);
         assert.indexOf('abcabd', 'ca', 2);
         assert.indexOf('ababab', 'ba', 1);
+        assert.indexOf('ababab', 'ba', 1);
+        assert.indexOf(12, '12', -1);
+        assert.indexOf('12', 12, -1);
         expect('ababab').to.have.indexOf('ba', 1);
       });
 

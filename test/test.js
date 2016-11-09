@@ -198,6 +198,35 @@
 
     });
 
+    describe('#containIgnoreSpaces', function () {
+
+      it('should return true', function () {
+        var str1 = '1234abcdef56',
+          str2 = '1234a\nb\tc\r d  ef56';
+        chai.string.containIgnoreSpaces(str1, str2).should.be.true;
+      });
+
+      it('should return true (2)', function () {
+        var str1 = 'abcdef',
+          str2 = 'a\nb\tc\r d  ef';
+        chai.string.containIgnoreSpaces(str1, str2).should.be.true;
+      });
+
+      it('should return false', function () {
+        var str1 = 'abdef',
+          str2 = 'a\nb\tc\r d  ef';
+        chai.string.containIgnoreSpaces(str1, str2).should.be.false;
+      });
+
+      it('should return false (2)', function () {
+        chai.string.containIgnoreSpaces('12', 12).should.be.false;
+      });
+
+      it('should return false (3)', function () {
+        chai.string.containIgnoreSpaces(12, '12').should.be.false;
+      });
+    });
+
     describe('#singleLine', function() {
 
       it('should return true', function() {
@@ -436,6 +465,14 @@
 
       it('.notEqualIgnoreSpaces (3)', function () {
         assert.notEqualIgnoreSpaces(12, '12');
+      });
+
+      it('.containIgnoreSpaces', function () {
+        assert.containIgnoreSpaces(this.str, this.str2);
+      });
+
+      it('.notContainIgnoreSpaces', function () {
+        assert.notContainIgnoreSpaces(this.str, this.str2 + 'g');
       });
 
       it('.singleLine', function() {

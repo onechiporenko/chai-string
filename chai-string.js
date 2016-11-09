@@ -50,6 +50,13 @@
     return str1.replace(/\s/g, '') === str2.replace(/\s/g, '');
   };
 
+  chai.string.containIgnoreSpaces = function (str1, str2) {
+    if (!isString(str1) || !isString(str2)) {
+      return false;
+    }
+    return str1.replace(/\s/g, '').indexOf(str2.replace(/\s/g, '')) > -1;
+  };
+
   chai.string.singleLine = function(str) {
     if (!isString(str)) {
       return false;
@@ -147,6 +154,16 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('containIgnoreSpaces', function (expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.containIgnoreSpaces(actual, expected),
+      'expected ' + this._obj + ' to contain ' + expected + ' ignoring spaces',
+      'expected ' + this._obj + ' not to contain ' + expected + ' ignoring spaces'
+    );
+  });
+
   chai.Assertion.addChainableMethod('singleLine', function () {
     var actual = this._obj;
 
@@ -230,6 +247,14 @@
 
   assert.notEqualIgnoreSpaces = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.equalIgnoreSpaces(exp);
+  };
+
+  assert.containIgnoreSpaces = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.containIgnoreSpaces(exp);
+  };
+
+  assert.notContainIgnoreSpaces = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.containIgnoreSpaces(exp);
   };
 
   assert.singleLine = function(val, exp, msg) {

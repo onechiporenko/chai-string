@@ -57,6 +57,13 @@
     return str1.replace(/\s/g, '').indexOf(str2.replace(/\s/g, '')) > -1;
   };
 
+  chai.string.containIgnoreCase = function (str1, str2) {
+    if (!isString(str1) || !isString(str2)) {
+      return false;
+    }
+    return str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
+  }
+
   chai.string.singleLine = function(str) {
     if (!isString(str)) {
       return false;
@@ -164,6 +171,16 @@
     );
   });
 
+  chai.Assertion.addChainableMethod('containIgnoreCase', function (expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.containIgnoreCase(actual, expected),
+      'expected ' + this._obj + ' to contain ' + expected + ' ignoring case',
+      'expected ' + this._obj + ' not to contain ' + expected + ' ignoring case'
+    );
+  });
+
   chai.Assertion.addChainableMethod('singleLine', function () {
     var actual = this._obj;
 
@@ -256,6 +273,14 @@
   assert.notContainIgnoreSpaces = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.containIgnoreSpaces(exp);
   };
+
+  assert.containIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.be.containIgnoreCase(exp);
+  };
+
+  assert.notContainIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.be.containIgnoreCase(exp);
+  }; 
 
   assert.singleLine = function(val, exp, msg) {
     new chai.Assertion(val, msg).to.be.singleLine();

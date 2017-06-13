@@ -226,6 +226,39 @@
         chai.string.containIgnoreSpaces(12, '12').should.be.false;
       });
     });
+	
+	describe('#containIgnoreCase', function() {
+		
+		it('should return true', function() {
+			var str1 = 'abcdef',
+			  str2 = 'cDe';
+			chai.string.containIgnoreCase(str1, str2).should.be.true;
+		});
+		
+		it('should return true (2)', function() {
+			var str1 = 'abcdef',
+			  str2 = 'AbCdeF';
+			chai.string.containIgnoreCase(str1, str2).should.be.true;
+		});
+		
+		it('should return false', function() {
+			var str1 = 'abcdef',
+			  str2 = 'efg'; 
+			chai.string.containIgnoreCase(str1, str2).should.be.false;
+		});
+		
+		it('should return false (2)', function() {
+			var str1 = '123',
+			  str2 = 123;
+			chai.string.containIgnoreCase(str1, str2).should.be.false;
+		});
+		
+		it('should return false (3)', function() {
+			var str1 = 'abcdef',
+			  str2 = 'zabcd';
+			chai.string.containIgnoreCase(str1, str2).should.be.false;
+		});
+	});
 
     describe('#singleLine', function() {
 

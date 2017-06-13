@@ -77,6 +77,12 @@ assert.containIgnoreSpaces('abcdefgh', 'a\nb\tc\r d  ef');
 expect('abcdefgh').to.containIgnoreSpaces('a\nb\tc\r d  ef');
 ```
 
+### containIgnoreCase
+```javascript
+assert.containIgnoreCase('abcdefgh', 'AbcDefGH'); 
+expect('abcdefgh').to.containIgnoreCase('AbcDefGH');
+```
+
 ### singleLine
 ```javascript
 assert.singleLine('abcdef');

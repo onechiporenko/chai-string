@@ -1,5 +1,5 @@
 (function (test) {
-  if (typeof require === "function"&& typeof exports === "object"&& typeof module === "object") {
+  if (typeof require === "function" && typeof exports === "object" && typeof module === "object") {
     // NodeJS
     (function () {
       var chai = require('chai');
@@ -73,7 +73,7 @@
       });
 
       it('check that', function () {
-        var obj = { foo: 'hello world' };
+        var obj = {foo: 'hello world'};
         expect(obj).to.have.property('foo').that.startsWith('hello');
       });
 
@@ -226,63 +226,63 @@
         chai.string.containIgnoreSpaces(12, '12').should.be.false;
       });
     });
-	
-	describe('#containIgnoreCase', function() {
-		
-		it('should return true', function() {
-			var str1 = 'abcdef',
-			  str2 = 'cDe';
-			chai.string.containIgnoreCase(str1, str2).should.be.true;
-		});
-		
-		it('should return true (2)', function() {
-			'abcdef'.should.containIgnoreCase('cDe');
-		});
-		
-		it('should return true (3)', function() {
-			var str1 = 'abcdef',
-			  str2 = 'AbCdeF';
-			chai.string.containIgnoreCase(str1, str2).should.be.true;
-		});
-		
-		it('should return false', function() {
-			var str1 = 'abcdef',
-			  str2 = 'efg'; 
-			chai.string.containIgnoreCase(str1, str2).should.be.false;
-		});
-		
-		it('should return false (2)', function() {
-			var str1 = '123',
-			  str2 = 123;
-			chai.string.containIgnoreCase(str1, str2).should.be.false;
-		});
-		
-		it('should return false (3)', function() {
-			var str1 = 'abcdef',
-			  str2 = 'zabcd';
-			chai.string.containIgnoreCase(str1, str2).should.be.false;
-		});
-	});
 
-    describe('#singleLine', function() {
+    describe('#containIgnoreCase', function () {
 
-      it('should return true', function() {
+      it('should return true', function () {
+        var str1 = 'abcdef',
+          str2 = 'cDe';
+        chai.string.containIgnoreCase(str1, str2).should.be.true;
+      });
+
+      it('should return true (2)', function () {
+        'abcdef'.should.containIgnoreCase('cDe');
+      });
+
+      it('should return true (3)', function () {
+        var str1 = 'abcdef',
+          str2 = 'AbCdeF';
+        chai.string.containIgnoreCase(str1, str2).should.be.true;
+      });
+
+      it('should return false', function () {
+        var str1 = 'abcdef',
+          str2 = 'efg';
+        chai.string.containIgnoreCase(str1, str2).should.be.false;
+      });
+
+      it('should return false (2)', function () {
+        var str1 = '123',
+          str2 = 123;
+        chai.string.containIgnoreCase(str1, str2).should.be.false;
+      });
+
+      it('should return false (3)', function () {
+        var str1 = 'abcdef',
+          str2 = 'zabcd';
+        chai.string.containIgnoreCase(str1, str2).should.be.false;
+      });
+    });
+
+    describe('#singleLine', function () {
+
+      it('should return true', function () {
         var str = 'abcdef';
         chai.string.singleLine(str).should.be.true;
       });
 
-      it('should return false', function() {
+      it('should return false', function () {
         var str = "abc\ndef";
         chai.string.singleLine(str).should.be.false;
       });
 
-      it('should return false (2)', function() {
+      it('should return false (2)', function () {
         chai.string.singleLine(12).should.be.false;
       });
 
     });
 
-    describe('#reverseOf', function() {
+    describe('#reverseOf', function () {
 
       it('should return true', function () {
         var str1 = 'abcdef',
@@ -306,72 +306,72 @@
 
     });
 
-    describe('#palindrome', function() {
+    describe('#palindrome', function () {
 
-      it('should return true', function() {
+      it('should return true', function () {
         var str = 'abcba';
         chai.string.palindrome(str).should.be.true;
       });
 
-      it('should return true (2)', function() {
+      it('should return true (2)', function () {
         var str = 'abccba';
         chai.string.palindrome(str).should.be.true;
       });
 
-      it('should return true (3)', function() {
+      it('should return true (3)', function () {
         var str = '';
         chai.string.palindrome(str).should.be.true;
       });
 
-      it('should return false', function() {
+      it('should return false', function () {
         var str = 'abcdef';
         chai.string.palindrome(str).should.be.false;
       });
 
-      it('should return false (2)', function() {
+      it('should return false (2)', function () {
         chai.string.palindrome(12).should.be.false;
       });
 
     });
 
-    describe('#entriesCount', function() {
+    describe('#entriesCount', function () {
 
-      it('should return true', function() {
+      it('should return true', function () {
         var str = 'abcabd',
           substr = 'ab',
           count = 2;
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
-      it('should return true (2)', function() {
+      it('should return true (2)', function () {
         var str = 'ababd',
           substr = 'ab',
           count = 2;
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
-      it('should return true (3)', function() {
+      it('should return true (3)', function () {
         var str = 'abab',
           substr = 'ab',
           count = 2;
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
-      it('should return true (4)', function() {
+      it('should return true (4)', function () {
         var str = 12,
           substr = 'ab',
           count = 0;
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
-      it('should return true (5)', function() {
+      it('should return true (5)', function () {
         var str = '12',
           substr = 12,
           count = 0;
         chai.string.entriesCount(str, substr, count).should.be.true;
       });
 
-      it('should return false ', function() {
+      it('should return false ', function () {
         var str = '12',
           substr = 12,
           count = 1;
@@ -380,58 +380,58 @@
 
     });
 
-    describe('#indexOf', function() {
+    describe('#indexOf', function () {
 
-      it('should return true', function() {
+      it('should return true', function () {
         var str = 'abcabd',
-            substr = 'ab',
-            index = 0;
+          substr = 'ab',
+          index = 0;
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
-      it('should return true (2)', function() {
+      it('should return true (2)', function () {
         var str = 'abcabd',
-            substr = 'ca',
-            index = 2;
+          substr = 'ca',
+          index = 2;
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
-      it('should return true (3)', function() {
+      it('should return true (3)', function () {
         var str = 'ababab',
-            substr = 'ba',
-            index = 1;
+          substr = 'ba',
+          index = 1;
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
-      it('should return true (4)', function() {
+      it('should return true (4)', function () {
         var str = '12',
           substr = 12,
           index = -1;
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
-      it('should return true (5)', function() {
+      it('should return true (5)', function () {
         var str = 12,
           substr = '12',
           index = -1;
         chai.string.indexOf(str, substr, index).should.be.true;
       });
 
-      it('should return false', function() {
+      it('should return false', function () {
         var str = 'abcaab',
-            substr = 'da',
-            index = 1;
+          substr = 'da',
+          index = 1;
         chai.string.indexOf(str, substr, index).should.be.false;
       });
 
-      it('should return false (2)', function() {
+      it('should return false (2)', function () {
         var str = '12',
           substr = 12,
           index = 0;
         chai.string.indexOf(str, substr, index).should.be.false;
       });
 
-      it('should return false (3)', function() {
+      it('should return false (3)', function () {
         var str = 12,
           substr = '12',
           index = 0;
@@ -512,49 +512,49 @@
         assert.notContainIgnoreSpaces(this.str, this.str2 + 'g');
       });
 
-      it('.singleLine', function() {
+      it('.singleLine', function () {
         assert.singleLine(this.str);
       });
 
-      it('.notSingleLine', function() {
+      it('.notSingleLine', function () {
         assert.notSingleLine("abc\ndef");
       });
 
-      it('.notSingleLine (2)', function() {
+      it('.notSingleLine (2)', function () {
         assert.notSingleLine(12);
       });
 
-      it('.reverseOf', function() {
+      it('.reverseOf', function () {
         assert.reverseOf(this.str, 'fedcba');
       });
 
-      it('.notReverseOf', function() {
+      it('.notReverseOf', function () {
         assert.notReverseOf(this.str, 'aaaaa');
       });
 
-      it('.notReverseOf (2)', function() {
+      it('.notReverseOf (2)', function () {
         assert.notReverseOf('12', 12);
       });
 
-      it('.notReverseOf (3)', function() {
+      it('.notReverseOf (3)', function () {
         assert.notReverseOf(12, '12');
       });
 
-      it('.palindrome', function() {
+      it('.palindrome', function () {
         assert.palindrome('abcba');
         assert.palindrome('abccba');
         assert.palindrome('');
       });
 
-      it('.notPalindrome', function() {
+      it('.notPalindrome', function () {
         assert.notPalindrome(this.str);
       });
 
-      it('.notPalindrome (2)', function() {
+      it('.notPalindrome (2)', function () {
         assert.notPalindrome(12);
       });
 
-      it('.entriesCount', function() {
+      it('.entriesCount', function () {
         assert.entriesCount('abcabd', 'ab', 2);
         assert.entriesCount('ababd', 'ab', 2);
         assert.entriesCount('abab', 'ab', 2);
@@ -563,7 +563,7 @@
         assert.entriesCount('12', 12, 0);
       });
 
-      it('.indexOf', function() {
+      it('.indexOf', function () {
         assert.indexOf('abcabd', 'ab', 0);
         assert.indexOf('abcabd', 'ca', 2);
         assert.indexOf('ababab', 'ba', 1);

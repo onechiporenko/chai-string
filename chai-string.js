@@ -64,26 +64,26 @@
     return str1.toLowerCase().indexOf(str2.toLowerCase()) > -1;
   }
 
-  chai.string.singleLine = function(str) {
+  chai.string.singleLine = function (str) {
     if (!isString(str)) {
       return false;
     }
     return str.trim().indexOf("\n") === -1;
   };
 
-  chai.string.reverseOf = function(str, reversed) {
+  chai.string.reverseOf = function (str, reversed) {
     if (!isString(str) || !isString(reversed)) {
       return false;
     }
     return str.split('').reverse().join('') === reversed;
   };
 
-  chai.string.palindrome = function(str) {
+  chai.string.palindrome = function (str) {
     if (!isString(str)) {
       return false;
     }
     var len = str.length;
-    for ( var i = 0; i < Math.floor(len/2); i++ ) {
+    for (var i = 0; i < Math.floor(len / 2); i++) {
       if (str[i] !== str[len - 1 - i]) {
         return false;
       }
@@ -91,7 +91,7 @@
     return true;
   };
 
-  chai.string.entriesCount = function(str, substr, count) {
+  chai.string.entriesCount = function (str, substr, count) {
     var matches = 0;
     if (isString(str) && isString(substr)) {
       var i = 0;
@@ -110,7 +110,7 @@
     return matches === count;
   };
 
-  chai.string.indexOf = function(str, substr, index) {
+  chai.string.indexOf = function (str, substr, index) {
     var indx = !isString(str) || !isString(substr) ? -1 : str.indexOf(substr);
     return indx === index;
   };
@@ -191,7 +191,7 @@
     );
   });
 
-  chai.Assertion.addChainableMethod('reverseOf', function(expected) {
+  chai.Assertion.addChainableMethod('reverseOf', function (expected) {
     var actual = this._obj;
 
     return this.assert(
@@ -211,7 +211,7 @@
     );
   });
 
-  chai.Assertion.addChainableMethod('entriesCount', function(substr, expected) {
+  chai.Assertion.addChainableMethod('entriesCount', function (substr, expected) {
     var actual = this._obj;
 
     return this.assert(
@@ -221,13 +221,13 @@
     );
   });
 
-  chai.Assertion.addChainableMethod('indexOf', function(substr, index) {
+  chai.Assertion.addChainableMethod('indexOf', function (substr, index) {
     var actual = this._obj;
 
     return this.assert(
-        chai.string.indexOf(actual, substr, index),
-        'expected ' + this._obj + ' to have ' + substr + ' on index ' + index,
-        'expected ' + this._obj + ' to not have ' + substr + ' on index ' + index
+      chai.string.indexOf(actual, substr, index),
+      'expected ' + this._obj + ' to have ' + substr + ' on index ' + index,
+      'expected ' + this._obj + ' to not have ' + substr + ' on index ' + index
     );
   });
 
@@ -280,37 +280,37 @@
 
   assert.notContainIgnoreCase = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.containIgnoreCase(exp);
-  }; 
+  };
 
-  assert.singleLine = function(val, exp, msg) {
+  assert.singleLine = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.be.singleLine();
   };
 
-  assert.notSingleLine = function(val, exp, msg) {
+  assert.notSingleLine = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.singleLine();
   };
 
-  assert.reverseOf = function(val, exp, msg) {
+  assert.reverseOf = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.be.reverseOf(exp);
   };
 
-  assert.notReverseOf = function(val, exp, msg) {
+  assert.notReverseOf = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.reverseOf(exp);
   };
 
-  assert.palindrome = function(val, exp, msg) {
+  assert.palindrome = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.be.palindrome();
   };
 
-  assert.notPalindrome = function(val, exp, msg) {
+  assert.notPalindrome = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.be.palindrome();
   };
 
-  assert.entriesCount = function(str, substr, count, msg) {
+  assert.entriesCount = function (str, substr, count, msg) {
     new chai.Assertion(str, msg).to.have.entriesCount(substr, count);
   };
 
-  assert.indexOf = function(str, substr, index, msg) {
+  assert.indexOf = function (str, substr, index, msg) {
     new chai.Assertion(str, msg).to.have.indexOf(substr, index);
   };
 

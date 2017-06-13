@@ -236,6 +236,10 @@
 		});
 		
 		it('should return true (2)', function() {
+			'abcdef'.should.containIgnoreCase('cDe');
+		});
+		
+		it('should return true (3)', function() {
 			var str1 = 'abcdef',
 			  str2 = 'AbCdeF';
 			chai.string.containIgnoreCase(str1, str2).should.be.true;

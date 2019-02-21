@@ -28,6 +28,7 @@ chai.use(require('chai-string'));
 * equalIgnoreCase
 * equalIgnoreSpaces
 * containIgnoreSpaces
+* containIgnoreCase
 * singleLine
 * reverseOf
 * palindrome

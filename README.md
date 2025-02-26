@@ -14,10 +14,10 @@ chai.use(require('chai-string'));
 
 ## Assertions
 
-* startsWith/startWith
-* startsWithIgnoreCase/startWithIgnoreCase
-* endsWith/endWith
-* endsWithIgnoreCase/endWithIgnoreCase
+* startsWith / startWith
+* startsWithIgnoreCase / startWithIgnoreCase
+* endsWith / endWith
+* endsWithIgnoreCase / endWithIgnoreCase
 * equalIgnoreCase
 * equalIgnoreSpaces
 * containIgnoreSpaces

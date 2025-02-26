@@ -8,7 +8,7 @@ Matchers for chai to help with common string comparison assertions.
 ## Usage
 
 ```javascript
-var chai = require('chai');
+const chai = require('chai');
 chai.use(require('chai-string'));
 ```
 

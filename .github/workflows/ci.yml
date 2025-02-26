@@ -12,7 +12,7 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  test:
+  tests:
     name: "Tests"
     runs-on: ubuntu-latest
     timeout-minutes: 10
@@ -35,30 +35,32 @@ jobs:
         run: pnpm test
 
   tries:
-    name: "Tries"
+    name: Node ${{ matrix.node }}, Chai ${{ matrix.chai }}
+    needs: "tests"
     runs-on: ubuntu-latest
     timeout-minutes: 10
 
     strategy:
+      fail-fast: false
       matrix:
         node: [16, 18, 20, 22]
         chai: [4, 5]
 
-        steps:
-          - uses: actions/checkout@v3
-          - uses: pnpm/action-setup@v4
-            with:
-              version: 9
-          - name: Install Node
-            uses: actions/setup-node@v3
-            with:
-              node-version: ${{ matrix.node }}
-              cache: pnpm
-          - name: Install Dependencies
-            run: |
-              pnpm install --frozen-lockfile
-              pnpm i -D chai@${{ matrix.chai }}
-          - name: Lint
-            run: pnpm lint
-          - name: Run Tests
-            run: pnpm test
+    steps:
+      - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 9
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+          cache: pnpm
+      - name: Install Dependencies
+        run: |
+          pnpm install --frozen-lockfile
+          pnpm i -D chai@${{ matrix.chai }}
+      - name: Lint
+        run: pnpm lint
+      - name: Run Tests
+        run: pnpm test

@@ -2,7 +2,7 @@
 
 Matchers for chai to help with common string comparison assertions.
 
-[![Build Status](https://travis-ci.org/onechiporenko/chai-string.png?branch=master)](https://travis-ci.org/onechiporenko/chai-string)
+[![CI](https://github.com/onechiporenko/chai-string/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/onechiporenko/chai-string/actions/workflows/ci.yml)
 [![Downloads](http://img.shields.io/npm/dm/chai-string.svg)](http://img.shields.io/npm/dm/chai-string.svg)
 
 ## Usage

@@ -24,7 +24,9 @@ chai.use(require('chai-string'));
 ## Assertions
 
 * startsWith/startWith
+* startsWithIgnoreCase/startWithIgnoreCase
 * endsWith/endWith
+* endsWithIgnoreCase/endWithIgnoreCase
 * equalIgnoreCase
 * equalIgnoreSpaces
 * containIgnoreSpaces
@@ -53,11 +55,25 @@ expect('abcdef').to.startsWith('abc');
 'abcdef'.should.startWith('abc');
 ```
 
+### startsWithIgnoreCase/startWithIgnoreCase
+```javascript
+assert.startsWithIgnoreCase('aBcdef', 'abC');
+expect('abCdef').to.startsWithIgnoreCase('Abc');
+'Abcdef'.should.startWithIgnoreCase('aBc');
+```
+
 ### endsWith/endWith
 ```javascript
 assert.endsWith('abcdef', 'def');
 expect('abcdef').to.endsWith('def');
 'abcdef'.should.endWith('def');
+```
+
+### endsWithIgnoreCase/endWithIgnoreCase
+```javascript
+assert.endsWithIgnoreCase('abcdEf', 'deF');
+expect('abcDef').to.endsWithIgnoreCase('dEf');
+'abcdeF'.should.endWithIgnoreCase('Def');
 ```
 
 ### equalIgnoreCase

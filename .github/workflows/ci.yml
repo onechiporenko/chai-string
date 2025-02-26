@@ -56,9 +56,9 @@ jobs:
         with:
           node-version: ${{ matrix.node }}
           cache: pnpm
-        run: node -v
       - name: Install Dependencies
         run: |
+          node -v
           pnpm install --frozen-lockfile
           pnpm i -D chai@${{ matrix.chai }}
       - name: Lint

@@ -7,15 +7,6 @@ Matchers for chai to help with common string comparison assertions.
 
 ## Usage
 
-### Browser
-
-```html
-<script src="chai.js"></script>
-<script src="chai-string.js"></script>
-```
-
-### Server
-
 ```javascript
 var chai = require('chai');
 chai.use(require('chai-string'));

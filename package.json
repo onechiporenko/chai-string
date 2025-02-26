@@ -27,6 +27,6 @@
     "mocha": "^5.2.0"
   },
   "peerDependencies": {
-    "chai": "^4.1.2"
+    "chai": "^4.1.2 || ^5.0.0"
   }
 }

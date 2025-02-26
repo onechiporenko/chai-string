@@ -1,6 +1,6 @@
 {
   "name": "chai-string",
-  "version": "1.5.0",
+  "version": "2.0.0",
   "keywords": [
     "chai",
     "testing",
@@ -10,8 +10,11 @@
   ],
   "description": "strings comparison matchers for chai",
   "main": "chai-string.js",
+  "type": "module",
   "scripts": {
-    "test": "mocha test"
+    "test": "mocha --reporter spec --recursive --colors test",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix"
   },
   "repository": {
     "type": "git",
@@ -23,10 +26,18 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
     "chai": "^5.0.0",
-    "mocha": "^5.2.0"
+    "eslint": "^9.21.0",
+    "eslint-config-prettier": "^10.0.1",
+    "eslint-plugin-mocha": "^10.5.0",
+    "eslint-plugin-n": "^17.15.1",
+    "eslint-plugin-prettier": "^5.2.3",
+    "globals": "^16.0.0",
+    "mocha": "^11.1.0",
+    "prettier": "^3.5.2"
   },
   "peerDependencies": {
-    "chai": "^4.1.2"
+    "chai": ">= 4"
   }
 }

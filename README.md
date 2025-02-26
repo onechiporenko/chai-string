@@ -3,7 +3,7 @@
 Matchers for chai to help with common string comparison assertions.
 
 [![CI](https://github.com/onechiporenko/chai-string/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/onechiporenko/chai-string/actions/workflows/ci.yml)
-[![Downloads](http://img.shields.io/npm/dm/chai-string.svg)](http://img.shields.io/npm/dm/chai-string.svg)
+[![Downloads](http://img.shields.io/npm/dm/chai-string.svg)](https://www.npmjs.com/package/chai-string)
 
 ## Usage
 

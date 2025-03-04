@@ -25,7 +25,7 @@ importers:
         version: 10.5.0(eslint@9.21.0)
       eslint-plugin-n:
         specifier: ^17.15.1
-        version: 17.15.1(eslint@9.21.0)
+        version: 17.16.2(eslint@9.21.0)
       eslint-plugin-prettier:
         specifier: ^5.2.3
         version: 5.2.3(eslint-config-prettier@10.0.2(eslint@9.21.0))(eslint@9.21.0)(prettier@3.5.2)
@@ -288,8 +288,8 @@ packages:
     peerDependencies:
       eslint: '>=7.0.0'
 
-  eslint-plugin-n@17.15.1:
-    resolution: {integrity: sha512-KFw7x02hZZkBdbZEFQduRGH4VkIH4MW97ClsbAM4Y4E6KguBJWGfWG1P4HEIpZk2bkoWf0bojpnjNAhYQP8beA==}
+  eslint-plugin-n@17.16.2:
+    resolution: {integrity: sha512-iQM5Oj+9o0KaeLoObJC/uxNGpktZCkYiTTBo8PkRWq3HwNcRxwpvSDFjBhQ5+HLJzBTy+CLDC5+bw0Z5GyhlOQ==}
     engines: {node: ^18.18.0 || ^20.9.0 || >=21.1.0}
     peerDependencies:
       eslint: '>=8.23.0'
@@ -988,7 +988,7 @@ snapshots:
       globals: 13.24.0
       rambda: 7.5.0
 
-  eslint-plugin-n@17.15.1(eslint@9.21.0):
+  eslint-plugin-n@17.16.2(eslint@9.21.0):
     dependencies:
       '@eslint-community/eslint-utils': 4.4.1(eslint@9.21.0)
       enhanced-resolve: 5.18.1

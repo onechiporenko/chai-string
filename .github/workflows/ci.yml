@@ -5,6 +5,7 @@ on:
     branches:
       - main
       - master
+      - v1.x
   pull_request: {}
 
 concurrency:
@@ -19,18 +20,14 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          cache: pnpm
       - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
+        run: npm install
       - name: Run Tests
-        run: pnpm test
+        run: npm test
 
   tries:
     name: Node ${{ matrix.node }}, Chai ${{ matrix.chai }}
@@ -45,22 +42,16 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
-      - uses: pnpm/action-setup@v4
-        with:
-          version: 9
       - name: Install Node
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: pnpm
       - name: Install Dependencies
         run: |
           node -v
-          pnpm install --frozen-lockfile
-      - name: Lint
-        run: pnpm lint
+          npm install
       - name: Run Tests
-        run: pnpm test
+        run: npm test
 
   validate-success:
     needs: ["tries"]

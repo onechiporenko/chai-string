@@ -79,6 +79,31 @@
 
     });
 
+    describe("#startsWithIgnoreCase", () => {
+      it("should return true", () => {
+        const str = "AbCdef",
+          prefix = "aBc";
+        chai.string.startsWithIgnoreCase(str, prefix).should.be.true;
+      });
+
+      it("should return false", () => {
+        const str = "abcdef",
+          prefix = "cba";
+        chai.string.startsWithIgnoreCase(str, prefix).should.be.false;
+      });
+
+      it("should return false (2)", () => {
+        const str = "12abcdef",
+          prefix = 12.0;
+        chai.string.startsWithIgnoreCase(str, prefix).should.be.false;
+      });
+
+      it("check that", () => {
+        const obj = { foo: "hElLo world" };
+        expect(obj).to.have.property("foo").that.startsWithIgnoreCase("HellO");
+      });
+    });
+
     describe('#startWith', function () {
 
       it('should return true', function () {
@@ -100,6 +125,27 @@
         chai.string.startsWith(str, prefix).should.be.false;
       });
 
+    });
+
+    describe("#startWithIgnoreCase", () => {
+      it("should return true", () => {
+        const str = "AbCdef",
+          prefix = "aBc";
+        str.should.startWithIgnoreCase(prefix);
+      });
+
+      it("should return false", () => {
+        const str = "abcdef",
+          prefix = "cba";
+        str.should.not.startWithIgnoreCase(prefix);
+      });
+
+      it("should return false (2)", () => {
+        const str = "12abcdef",
+          prefix = 12.0;
+        str.should.not.startWithIgnoreCase(prefix);
+        chai.string.startsWith(str, prefix).should.be.false;
+      });
     });
 
     describe('#endsWith', function () {
@@ -124,6 +170,26 @@
 
     });
 
+    describe("#endsWithIgnoreCase", () => {
+      it("should return true", () => {
+        const str = "abcDeF",
+          suffix = "dEf";
+        chai.string.endsWithIgnoreCase(str, suffix).should.be.true;
+      });
+
+      it("should return false", () => {
+        const str = "abcdef",
+          suffix = "fed";
+        chai.string.endsWithIgnoreCase(str, suffix).should.be.false;
+      });
+
+      it("should return false (2)", () => {
+        const str = "abcdef12",
+          suffix = 12.0;
+        chai.string.endsWithIgnoreCase(str, suffix).should.be.false;
+      });
+    });
+
     describe('#endWith', function () {
 
       it('should return true', function () {
@@ -144,6 +210,26 @@
         str.should.not.endsWith(suffix);
       });
 
+    });
+
+    describe("#endWithIgnoreCase", () => {
+      it("should return true", () => {
+        const str = "abcdEf",
+          suffix = "DeF";
+        str.should.endWithIgnoreCase(suffix);
+      });
+
+      it("should return false", () => {
+        const str = "abcdef",
+          suffix = "fed";
+        str.should.not.endWithIgnoreCase(suffix);
+      });
+
+      it("should return false (2)", () => {
+        const str = "abcdef12",
+          suffix = 12.0;
+        str.should.not.endWithIgnoreCase(suffix);
+      });
     });
 
     describe('#equalIgnoreCase', function () {

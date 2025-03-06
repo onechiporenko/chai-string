@@ -1,0 +1,81 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - master
+      - v1.x
+  pull_request: {}
+
+concurrency:
+  group: ci-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  tests:
+    name: "Tests"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Tests
+        run: npm test
+
+  tries:
+    name: Node ${{ matrix.node }}, Chai ${{ matrix.chai }}
+    needs: "tests"
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    strategy:
+      fail-fast: false
+      matrix:
+        node: [18, 20, 22]
+
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node }}
+      - name: Install Dependencies
+        run: |
+          node -v
+          npm install
+      - name: Run Tests
+        run: npm test
+
+  validate-success:
+    needs: ["tries"]
+    runs-on: ubuntu-latest
+    outputs:
+      success: ${{ steps.set-output.outputs.success }}
+    steps:
+      - id: set-output
+        run: echo "success=true" >> $GITHUB_OUTPUT
+
+  notify-success:
+    name: CI pipeline succeeded
+    needs: ["validate-success"]
+    if: always() # Always run, so we never skip this required check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Note Pipeline Passed
+        run: |
+          msgPrefix="Pipeline #${{ github.run_id }} finished"
+          passed="${{ needs.validate-success.outputs.success }}"
+          if [[ "$passed" == "true" ]]; then
+            echo "${msgPrefix}, PR passed all tests."
+            exit 0
+          else
+            echo "${msgPrefix}, but with failures. Check left sidebar summary to see which jobs failed."
+            exit 1
+          fi

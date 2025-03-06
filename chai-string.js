@@ -29,11 +29,29 @@
     return str.indexOf(prefix) === 0;
   };
 
+  chai.string.startsWithIgnoreCase = function (str, prefix) {
+    if (!isString(str) || !isString(prefix)) {
+      return false;
+    }
+    return str.toLocaleLowerCase().indexOf(prefix.toLocaleLowerCase()) === 0;
+  };
+
   chai.string.endsWith = function (str, suffix) {
     if (!isString(str) || !isString(suffix)) {
       return false;
     }
     return str.indexOf(suffix, str.length - suffix.length) !== -1;
+  };
+
+  chai.string.endsWithIgnoreCase = function (str, suffix) {
+    if (!isString(str) || !isString(suffix)) {
+      return false;
+    }
+    var strLower = str.toLocaleLowerCase();
+    var suffixLower = suffix.toLocaleLowerCase();
+    return (
+      strLower.indexOf(suffixLower, strLower.length - suffixLower.length) !== -1
+    );
   };
 
   chai.string.equalIgnoreCase = function (str1, str2) {
@@ -128,6 +146,29 @@
   chai.Assertion.addChainableMethod('startsWith', startsWithMethodWrapper);
   chai.Assertion.addChainableMethod('startWith', startsWithMethodWrapper);
 
+  var startsWithIgnoreCaseMethodWrapper = function (expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.startsWithIgnoreCase(actual, expected),
+      "expected " + this._obj + " to start with " + expected + " ignoring case",
+      "expected " +
+      this._obj +
+      " not to start with " +
+      expected +
+      " ignoring case",
+    );
+  };
+
+  chai.Assertion.addChainableMethod(
+    "startsWithIgnoreCase",
+    startsWithIgnoreCaseMethodWrapper,
+  );
+  chai.Assertion.addChainableMethod(
+    "startWithIgnoreCase",
+    startsWithIgnoreCaseMethodWrapper,
+  );
+
   var endsWithMethodWrapper = function (expected) {
     var actual = this._obj;
 
@@ -140,6 +181,30 @@
 
   chai.Assertion.addChainableMethod('endsWith', endsWithMethodWrapper);
   chai.Assertion.addChainableMethod('endWith', endsWithMethodWrapper);
+
+  var endsWithIgnoreCaseMethodWrapper = function (expected) {
+    var actual = this._obj;
+
+    return this.assert(
+      chai.string.endsWithIgnoreCase(actual, expected),
+      "expected " + this._obj + " to end with " + expected + " ignoring case",
+      "expected " +
+      this._obj +
+      " not to end with " +
+      expected +
+      " ignoring case",
+    );
+  };
+
+  chai.Assertion.addChainableMethod(
+    "endsWithIgnoreCase",
+    endsWithIgnoreCaseMethodWrapper,
+  );
+  chai.Assertion.addChainableMethod(
+    "endWithIgnoreCase",
+    endsWithIgnoreCaseMethodWrapper,
+  );
+
 
   chai.Assertion.addChainableMethod('equalIgnoreCase', function (expected) {
     var actual = this._obj;
@@ -238,16 +303,32 @@
     new chai.Assertion(val, msg).to.startsWith(exp);
   };
 
+  assert.startsWithIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.startsWithIgnoreCase(exp);
+  };
+
   assert.notStartsWith = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.startsWith(exp);
+  };
+
+  assert.notStartsWithIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.startsWithIgnoreCase(exp);
   };
 
   assert.endsWith = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.endsWith(exp);
   };
 
+  assert.endsWithIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.endsWithIgnoreCase(exp);
+  };
+
   assert.notEndsWith = function (val, exp, msg) {
     new chai.Assertion(val, msg).to.not.endsWith(exp);
+  };
+
+  assert.notEndsWithIgnoreCase = function (val, exp, msg) {
+    new chai.Assertion(val, msg).to.not.endsWithIgnoreCase(exp);
   };
 
   assert.equalIgnoreCase = function (val, exp, msg) {

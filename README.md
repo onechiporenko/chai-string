@@ -7,9 +7,21 @@ Matchers for chai to help with common string comparison assertions.
 
 ## Usage
 
+* `chai-string@1.x` is compatible with `chai@4.x` and `chai@5.x`.
+* `chai-string@2.x` is compatible with `chai@5.x` because of ESM.
+
+All assertions should work in the same way with both versions.
+
 ```javascript
+// v1.x
 const chai = require('chai');
 chai.use(require('chai-string'));
+
+// v2.x
+import { use } from 'chai';
+import chaiString from 'chai-string';
+
+const chai = use(chaiString);
 ```
 
 ## Assertions
